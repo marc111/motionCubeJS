@@ -1,10 +1,11 @@
 # motionCubeJS
-###*简介：
-  这是一个用于构建css3动画的轻量库。使用motionCubeJs可以快速的对元素进行动画设置和动画关键帧的管理。
+  一个简单易用的CSS3动画轻量库。
+# 简介：
+  使用motionCubeJs可以快速的对元素进行简单的动画效果设置，还可以进行多个关键帧的连续动画设置和动画关键帧的管理。
 
-###*使用方式：
+# 使用方式：
   直接在页面引用即可
 ```javascript
 <script src = "motionCube.js"></script>
 ```
-###*API：
+# API：
