@@ -21,10 +21,10 @@ var 'newVariable' = new Motion('element');
 * @param1 {number} 动画过渡时间
 * @param2 {string or array} 动画运动曲线
 */
-
+<br/>
 'motionVariable'.newFrame(200,'ease') //在前一关键帧到新帧的过渡时间为200毫秒,运动曲线为'ease'
 ```
-
+<br/>
 * matrix (transform 矩阵类)
 ```javascript
 /*
@@ -46,7 +46,7 @@ var 'newVariable' = new Motion('element');
                 .rotateZ(45) //添加Z轴上旋转45度动作
 //还有更多matrix类api查看......
 ```
-
+<br/>
 * prepare 触发动画前准备
 ```javascript
 'motionVariable'.newFrame(200,'ease')
@@ -54,7 +54,7 @@ var 'newVariable' = new Motion('element');
                 .rotateZ(45)
                 .prepare() //动画触发前准备
 ```
-
+<br/>
 * move 播放一帧动画
 ```javascript
 /* 
@@ -63,7 +63,7 @@ var 'newVariable' = new Motion('element');
 
 'motionVariable'.move('forward') //播放当前帧到下一帧的动画效果
 ```
-
+<br/>
 * loop 动画循环播放
 ```javascript
 /* 
@@ -73,7 +73,7 @@ var 'newVariable' = new Motion('element');
 
 'motionVariable'.loop(3,'forward') //运行所有关键帧的动画并循环3次,停止时方向设置为'forward'
 ```
-
+<br/>
 * stop
 ```javascript
 /* 
@@ -82,7 +82,7 @@ var 'newVariable' = new Motion('element');
 
 'motionVariable'.stop('forward') //动画停止并且方向设置为'forward'
 ```
-
+<br/>
 * reset
 ```javascript
 /* 
@@ -93,13 +93,15 @@ var 'newVariable' = new Motion('element');
 ```
 
 ## cubic-bezier 
-关键帧的运动曲线采用的是transition-timing-function的值,默认值有以下几个:
-
-'linear'
-'ease'
-'ease-in'
-'ease-out'
-'ease-in-out'
-
-当然也可以使用贝塞尔曲线值来设置,预览其它贝塞尔曲线效果,可以浏览下面的连接:
+关键帧的运动曲线采用的是transition-timing-function的值,默认值有以下几个:<br/>
+<br/>
+'linear'<br/>
+'ease'<br/>
+'ease-in'<br/>
+'ease-out'<br/>
+'ease-in-out'<br/>
+<br/>
+当然也可以使用贝塞尔曲线值来设置,预览其它贝塞尔曲线效果,可以浏览下面的连接:<br/>
 http://cubic-bezier.com/
+
+##
