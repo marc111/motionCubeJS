@@ -117,17 +117,17 @@ http://cubic-bezier.com/
 
 ## compatibility
 * 2d动画兼容:<br/>
-IE 10.0+
-chrome 4.0+
-firefox 4.0+
-safari 3.1+
-opera 10.5+
+IE 10.0+<br/>
+chrome 4.0+<br/>
+firefox 4.0+<br/>
+safari 3.1+<br/>
+opera 10.5+<br/>
 <br/>
 * 3d动画兼容:<br/>
-IE 10.0+
-chrome 12.0+
-firefox 10.0+
-safari 4.0+
-opera 15.0+
+IE 10.0+<br/>
+chrome 12.0+<br/>
+firefox 10.0+<br/>
+safari 4.0+<br/>
+opera 15.0+<br/>
 
 ## document
