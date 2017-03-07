@@ -1,8 +1,7 @@
 # motionCubeJS
 使用方式：
 ------------
-直接再也面引用
-------------
+直接在页面引用即可
 ```javascript
 <script src = "motionCube.js"></script>
 ```
