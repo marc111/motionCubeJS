@@ -12,7 +12,7 @@
 ```javascript
 var 'newVariable' = new Motion('element');
 
-/*使用new关键字,传入一个元素作为参数,新建一个Motion对象,即可在使用motionCubeJs的api设置元素的动画效果*/
+//使用new关键字传入一个目标元素新建一个Motion对象,即可使用motionCubeJs的api设置元素的动画效果
 ```
 ## API:
 * newFrame (新建关键帧)
@@ -22,9 +22,7 @@ var 'newVariable' = new Motion('element');
 * @param2 {string or array} 动画运动曲线
 */
 
-'motionVariable'.newFrame(200,[0.22,1,0.22,1]);
-
-/*在前一关键帧到新帧的过渡时间为200毫秒,运动曲线为'cubic-bezier(0.22,1,0.22,1)'*/
+'motionVariable'.newFrame(200,'ease') //在前一关键帧到新帧的过渡时间为200毫秒,运动曲线为'ease'
 ```
 * matrix (transform 矩阵类)
 ```javascript
@@ -35,18 +33,33 @@ var 'newVariable' = new Motion('element');
 * @param3 {number} 元素Z轴位移值
 */
 
-'motionVariable'.translateAll(20,30);
-
-/*元素向右移动20px,向下移动30px*/
-
+'motionVariable'.newFrame(200,'ease').translateAll(20,30) //在新帧中添加X轴移动20pxY轴移动30px动作
 /*
 * rotateZ
 * @param1 {number} 元素Z轴旋转角度
 */
 
-'motionVariable'.rotateZ(45)
+'motionVariable'.newFrame(200,'ease').translateAll(20,30).rotateZ(45) //添加Z轴上旋转45度动作
+//还有更多matrix类api查看......
+```
+* prepare 触发动画前准备
+```javascript
+'motionVariable'.newFrame(200,'ease').translateAll(20,30).rotateZ(45).prepare() //动画触发前准备
+```
+* move 播放一帧动画
+```javascript
+/* 
+* @param1 {string} 关键帧运动方向
+*/
 
-/*元素在Z轴上旋转45度*/
+'motionVariable'.move('forward') //播放当前帧到下一帧的动画效果
+```
+* loop 动画循环播放
+```javascript
+/* 
+* @param1 {number} 动画循环次数
+* @param2 {string} 动画停止后关键帧的运动方向
+*/
 
-
+'motionVariable'.loop(3,'forward') //运行所有关键帧的动画并循环3次,停止时方向设置为'forward'
 ```
