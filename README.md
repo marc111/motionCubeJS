@@ -34,19 +34,25 @@ var 'newVariable' = new Motion('element');
 * @param3 {number} 元素Z轴位移值
 */
 
-'motionVariable'.newFrame(200,'ease').translateAll(20,30) //在新帧中添加X轴移动20pxY轴移动30px动作
+'motionVariable'.newFrame(200,'ease')
+                .translateAll(20,30) //在新帧中添加X轴移动20pxY轴移动30px动作
 /*
 * rotateZ
 * @param1 {number} 元素Z轴旋转角度
 */
 
-'motionVariable'.newFrame(200,'ease').translateAll(20,30).rotateZ(45) //添加Z轴上旋转45度动作
+'motionVariable'.newFrame(200,'ease')
+                .translateAll(20,30)
+                .rotateZ(45) //添加Z轴上旋转45度动作
 //还有更多matrix类api查看......
 ```
 
 * prepare 触发动画前准备
 ```javascript
-'motionVariable'.newFrame(200,'ease').translateAll(20,30).rotateZ(45).prepare() //动画触发前准备
+'motionVariable'.newFrame(200,'ease')
+                .translateAll(20,30)
+                .rotateZ(45)
+                .prepare() //动画触发前准备
 ```
 
 * move 播放一帧动画
@@ -85,3 +91,15 @@ var 'newVariable' = new Motion('element');
 
 'motionVariable'.reset('2') //停止在第二帧并且重置所有参数
 ```
+
+## cubic-bezier 
+关键帧的运动曲线采用的是transition-timing-function的值,默认值有以下几个:
+
+'linear'
+'ease'
+'ease-in'
+'ease-out'
+'ease-in-out'
+
+当然也可以使用贝塞尔曲线值来设置,预览其它贝塞尔曲线效果,可以浏览下面的连接:
+http://cubic-bezier.com/
