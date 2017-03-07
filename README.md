@@ -115,4 +115,19 @@ var 'newVariable' = new Motion('element');
 当然也可以使用贝塞尔曲线值来设置,预览其它贝塞尔曲线效果,可以浏览下面的连接:<br/>
 http://cubic-bezier.com/
 
-##
+## compatibility
+* 2d动画兼容:<br/>
+IE 10.0+
+chrome 4.0+
+firefox 4.0+
+safari 3.1+
+opera 10.5+
+<br/>
+* 3d动画兼容:<br/>
+IE 10.0+
+chrome 12.0+
+firefox 10.0+
+safari 4.0+
+opera 15.0+
+
+## document
