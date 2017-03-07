@@ -44,7 +44,18 @@ var 'newVariable' = new Motion('element');
 'motionVariable'.newFrame(200,'ease')
                 .translateAll(20,30)
                 .rotateZ(45) //添加Z轴上旋转45度动作
+                
+                
+                
 //还有更多matrix类api查看......
+```
+<br/>
+* newAttribute 设置自定义动画属性
+```javascript
+'motionVariable'.newFrame(200,'ease')
+                .translateAll(20,30)
+                .rotateZ(45) 
+                .newAttribute("opacity","0.5")//添加透明度变为0.5的动作
 ```
 <br/>
 * prepare 触发动画前准备
