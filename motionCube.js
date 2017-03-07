@@ -1,6 +1,6 @@
 ;(function(){
 
-    /***@@@ 模块管理器 @@@***/
+    // 模块管理器
 
     function require(n) {
         var  module = require.modules[n];
@@ -19,6 +19,13 @@
         this.modules[n] = {};
         this.modules[n].define = fn
     };
+
+
+    /*
+    * 浏览器是否支持transform属性和是否有前缀
+    *
+    * @exports {string} transform属性名称
+    * */
 
     require.register("transformTest",function (module,exports) {
 
@@ -41,6 +48,14 @@
         }
         module.exports =  style == undefined?false:style
     });
+
+
+
+    /*
+     * 浏览器是否支持transition3d动画
+     *
+     * @exports {boolean} 是否支持3d
+     * */
 
     require.register("threeDTest",function (module,exports) {
 
@@ -66,6 +81,14 @@
         module.exports = result
     });
 
+
+
+    /*
+     * 浏览器是否支持transition属性和是否有前缀
+     *
+     * @exports {string} transition属性名称
+     * */
+
     require.register("transitionTest",function (module,exports) {
 
         var styles = [
@@ -86,6 +109,14 @@
         module.exports = style == undefined?false:style
     });
 
+
+
+
+    /*
+     * 浏览器是否完全支持transition动画效果
+     *
+     * @exports {boolean} 是否完全支持动画
+     * */
     require.register("testResult",function (module,exports) {
 
         /*依赖模块*/
@@ -96,6 +127,13 @@
         module.exports = first && second && third
     });
 
+
+
+    /*
+     * 浏览器的transitionEnd事件和前缀
+     *
+     * @exports {string} transitionEnd事件名称
+     * */
     require.register("endEvent",function (module,exports) {
 
         var transitionTest = require("transitionTest");
@@ -111,6 +149,16 @@
         module.exports = events[transitionTest]
     });
 
+
+
+    /*
+     * transform矩阵设置函数库
+     *
+     * @exports {object,function} 包含矩阵设置函数的对象
+     * @param {number} transform设置参数
+     * @return {object} 矩阵
+     * @api {private}
+     * */
     require.register("matrixLibrary",function (module,exports) {
 
         module.exports = {
@@ -435,6 +483,16 @@
 
     });
 
+
+
+    /*
+     * 两个三阶矩阵相乘的函数
+     *
+     * @exports {function} 矩阵组合函数
+     * @ param {object} 矩阵
+     * @ return {object} 矩阵
+     * @ api {private}
+     * */
     require.register("matrixCombine",function (module,exports) {
 
         module.exports = function (m1,m2) {
@@ -459,6 +517,16 @@
         }
     });
 
+
+
+    /*
+     * 字符转化矩阵函数
+     *
+     * @exports {function} 转化函数
+     * @ param {string} transform的matrix或者matrix3d值
+     * @ return {object} 矩阵
+     * @ api {private}
+     * */
     require.register("stringToMatrix",function (module,exports) {
 
         module.exports = function (t) {
@@ -533,6 +601,16 @@
 
     });
 
+
+
+    /*
+     * 矩阵字符转化函数
+     *
+     * @exports {function} 转化函数
+     * @ param {object} 矩阵
+     * @ return {string} transform的matrix或者matrix3d值
+     * @ api {private}
+     * */
     require.register("matrixToString",function (module,exports) {
 
         module.exports = function (m) {
@@ -545,6 +623,16 @@
 
     });
 
+
+
+    /*
+     * 贝塞尔曲线
+     *
+     * @exports {function} 贝塞尔曲线函数
+     * @ param {string,array} 贝塞尔曲线默认值或者曲线数组
+     * @ return {string} transitionTimingFunction值
+     * @ api {private}
+     * */
     require.register("cubicBezier",function (module,exports) {
 
         module.exports = function (f) {
@@ -557,6 +645,15 @@
 
     });
 
+
+
+    /*
+     * style设置函数
+     *
+     * @exports {function} style设置函数
+     * @ param {object} 贝塞尔曲线默认值或者曲线数组
+     * @ api {private}
+     * */
     require.register("styleSet",function (module,exports) {
 
         module.exports = function (o) {
@@ -569,6 +666,15 @@
 
     });
 
+
+
+    /*
+     * 属性赋值函数
+     *
+     * @exports {function} 属性赋值函数
+     * @ param {object} 传授属性的对象和被传授的对象
+     * @ api {private}
+     * */
     require.register("extendProperty",function (module,exports) {
 
         module.exports = function (target,giver) {
@@ -581,6 +687,15 @@
 
     });
 
+
+
+    /*
+     * 事件管理器
+     *
+     * @exports {object,function} 属性赋值函数
+     * @ param {object,string,function} 设置发射器的对象,事件名称,回调函数等
+     * @ api {private}
+     * */
     require.register("eventBank",function (module,exports) {
 
         module.exports = {
@@ -600,7 +715,16 @@
         }
 
     });
-    
+
+
+
+    /*
+    * 事件监听封装
+    *
+    * @exports {object,function} 浏览器事件监听器的封装函数
+    * @param {element,string,function,boolean} 设置监听器的对象,事件名称,回调函数等
+    * @ api {private}
+    * */
     require.register("eventTools",function (module,exports) {
         
         var add = window.addEventListener?"addEventListener":"attachEvent",
@@ -617,22 +741,25 @@
         
     });
 
+
+
+    // 主程序
     require.register("motion",function (module,exports) {
 
         /* 依赖模块 */
-        var tf = require("transformTest"),
-            ts = require("transitionTest"),
-            tr = require("testResult"),
-            endE = require("endEvent"),
-            ml = require("matrixLibrary"),
-            mc = require("matrixCombine"),
-            mts = require("matrixToString"),
-            stm = require("stringToMatrix"),
-            ep = require("extendProperty"),
-            eb = require("eventBank"),
-            ss = require("styleSet"),
-            cb = require("cubicBezier"),
-            et = require("eventTools");
+        var tf = require("transformTest"),  //transform名称
+            ts = require("transitionTest"), //transition名称
+            tr = require("testResult"),  //动画支持结果
+            endE = require("endEvent"), //transitionEnd事件名称
+            ml = require("matrixLibrary"), //transform矩阵函数库
+            mc = require("matrixCombine"), //矩阵结合函数
+            mts = require("matrixToString"), //矩阵转字符函数
+            stm = require("stringToMatrix"), //字符转矩阵函数
+            ep = require("extendProperty"), //属性复制函数
+            eb = require("eventBank"), //事件管理器
+            ss = require("styleSet"), //style设置函数
+            cb = require("cubicBezier"), //贝塞尔曲线函数
+            et = require("eventTools"); //事件监听器封装
 
 
         /* 支持检测 */
@@ -640,7 +767,7 @@
             alert("您的浏览器版本过低，动画效果可能无法正常展现！")
         }
 
-
+        //motion对象构造函数
         function Motion(target) {
 
             this.el = target;
@@ -652,7 +779,7 @@
 
         Motion.prototype = {
 
-            /* 动画用于设置matrix矩阵的方法,包含transform的所有过渡效果 */
+            //动画用于设置matrix矩阵的方法,包含transform的所有过渡效果
             translateAll:function (x,y,z) {
                 return this.trigger("matrixSet","translateAll",x,y,z)
             },
@@ -700,7 +827,7 @@
             },
 
 
-            /* 元素用于设置动画的方法 */
+            //motion对象api
             _init:function () {
                 this.trigger("initElement")
             },
@@ -731,6 +858,10 @@
         ep(Motion.prototype,eb);
 
 
+        /*
+        * motion初始化事件
+        * 新建一个对象,包含动画的对象元素,关键帧储存器,还有各种状态属性设置;
+        * */
         Motion.prototype.addAction("initElement",function () {
 
             this.direction = "forward";
@@ -745,6 +876,15 @@
 
         });
 
+
+        /*
+         * motion新建关键帧事件
+         * 给motion对象新建一个关键帧,并设置该帧与前帧之间的运动时间和运动曲线
+         *
+         * @ param1 {number} transitionDuration
+         * @ param2 {string,array} transitionTimingFunction
+         * @ api {public}
+         * */
         Motion.prototype.addAction("newFrame",function (t,f) {
 
             if(this.status == "moving" ){
@@ -777,6 +917,17 @@
             return this
         });
 
+
+
+        /*
+         * motion关键帧矩阵设置事件
+         * 调用transform矩阵函数库,用于设置关键帧矩阵
+         * 传入函数为调用的函数名称,传入函数的参数
+         *
+         * @ param1 {string} 矩阵函数名称
+         * @ param2 {number} 传入矩阵函数的参数
+         * @ api {public}
+         * */
         Motion.prototype.addAction("matrixSet",function () {
 
             if(this.status == "setting"){
@@ -795,6 +946,17 @@
 
         });
 
+
+
+        /*
+         * motion关键帧其它属性设置事件
+         * 设置目标元素除transform外其它属性值
+         * 传入属性名称和值
+         *
+         * @ param1 {string} 属性名称
+         * @ param2 {string} 属性值
+         * @ api {public}
+         * */
         Motion.prototype.addAction("newAttribute",function (n,v) {
             if(this.status == "setting"){
                 var k = this.keyFrames;
@@ -810,6 +972,16 @@
             return false
         });
 
+
+
+        /*
+         * motion动画循环播放时间
+         * 让元素所以关键帧动画循环播放
+         *
+         * @ param1 {number} 播放次数
+         * @ param2 {string} 播放后的动画方向
+         * @ api {public}
+         * */
         Motion.prototype.addAction("loop",function (i,d) {
 
             if(this.status == "prepare"){
@@ -837,6 +1009,15 @@
             return false
         });
 
+
+
+        /*
+         * motion单帧播放时间
+         * 让元素只播放一个关键帧的动画
+         *
+         * @ param1 {string} 动画播放方向
+         * @ api {public}
+         * */
         Motion.prototype.addAction("move",function (d) {
 
             if(this.status == "moving" || this.status == "prepare"){
@@ -865,6 +1046,14 @@
 
         });
 
+
+
+        /*
+         * motion预备事件
+         * motion对象同级所有帧之间过渡需要触发的transitionEnd事件数并且记录
+         *
+         * @ api {public}
+         * */
         Motion.prototype.addAction("prepare",function () {
             if(this.status == "setting"){
 
@@ -885,6 +1074,14 @@
             return false
         });
 
+
+
+        /*
+         * motion方向检测事件
+         * 检测动画是否需要转换播放方向并且设定方向
+         *
+         * @ api {private}
+         * */
         Motion.prototype.addAction("directionTest",function () {
 
             var k = this.keyFrames,
@@ -898,6 +1095,14 @@
             }
         });
 
+
+
+        /*
+         * motion关键帧检测事件
+         * 检测动画的播放帧和过渡帧
+         *
+         * @ api {private}
+         * */
         Motion.prototype.addAction("frameTest",function () {
 
             var i = this.keyFrames.indexOf(this.moveFrame);
@@ -917,6 +1122,15 @@
 
         });
 
+
+
+
+        /*
+         * motion帧运动时间
+         * 读取motion对象的播放帧和过渡帧并且赋值给目标元素以触发动画效果
+         *
+         * @ api {private}
+         * */
         Motion.prototype.addAction("frameRun",function () {
 
             ss.call(this.el,this.transFrame);
@@ -924,6 +1138,17 @@
 
         });
 
+
+
+
+
+        /*
+         * motion停止事件
+         * 让动画停止播放,并且重置部分属性
+         *
+         * @ param {string} 动画停止后的播放方向
+         * @ api {public}
+         * */
         Motion.prototype.addAction("stop",function (d) {
 
             et.sub(this.el,endE,this.endEvent,false);
@@ -939,6 +1164,16 @@
             return this
         });
 
+
+
+
+        /*
+         * motion重置事件
+         * 让动画停止在选定的关键帧状态,并且重置所有motion属性
+         *
+         * @ param {number} 动画停止的关键帧下标
+         * @ api {public}
+         * */
         Motion.prototype.addAction("reset",function (n) {
 
             et.sub(this.el,endE,this.endEvent,false);
@@ -964,6 +1199,14 @@
             return this
         });
 
+
+
+        /*
+         * motion单帧动画完成事件
+         * 设定单帧动画每次transitionEnd后的回调函数
+         *
+         * @ api {private}
+         * */
         Motion.prototype.addAction("moveEnd",function () {
 
             return function () {
@@ -978,6 +1221,14 @@
 
         });
 
+
+
+        /*
+         * motion循环动画完成事件
+         * 设定单帧动画每次transitionEnd后的回调函数
+         *
+         * @ api {private}
+         * */
         Motion.prototype.addAction("loopEnd",function () {
 
             return function (d) {
