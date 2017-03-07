@@ -12,7 +12,7 @@
 ```javascript
 var 'newVariable' = new Motion('element');
 
-/使用new关键字,传入一个元素作为参数,新建一个Motion对象,即可在使用motionCubeJs的api设置元素的动画效果/
+/*使用new关键字,传入一个元素作为参数,新建一个Motion对象,即可在使用motionCubeJs的api设置元素的动画效果*/
 ```
 ## API:
 * newFrame (新建关键帧)
@@ -28,9 +28,8 @@ var 'newVariable' = new Motion('element');
 ```
 * matrix (transform 矩阵类)
 ```javascript
-
-translateAll
 /*
+* translateAll
 * @param1 {number} 元素X轴位移值
 * @param2 {number} 元素Y轴位移值
 * @param3 {number} 元素Z轴位移值
@@ -38,5 +37,16 @@ translateAll
 
 'motionVariable'.translateAll(20,30);
 
-元素向右移动20px,向下移动30px
+/*元素向右移动20px,向下移动30px*/
+
+/*
+* rotateZ
+* @param1 {number} 元素Z轴旋转角度
+*/
+
+'motionVariable'.rotateZ(45)
+
+/*元素在Z轴上旋转45度*/
+
+
 ```
