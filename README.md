@@ -24,6 +24,7 @@ var 'newVariable' = new Motion('element');
 
 'motionVariable'.newFrame(200,'ease') //在前一关键帧到新帧的过渡时间为200毫秒,运动曲线为'ease'
 ```
+
 * matrix (transform 矩阵类)
 ```javascript
 /*
@@ -42,10 +43,12 @@ var 'newVariable' = new Motion('element');
 'motionVariable'.newFrame(200,'ease').translateAll(20,30).rotateZ(45) //添加Z轴上旋转45度动作
 //还有更多matrix类api查看......
 ```
+
 * prepare 触发动画前准备
 ```javascript
 'motionVariable'.newFrame(200,'ease').translateAll(20,30).rotateZ(45).prepare() //动画触发前准备
 ```
+
 * move 播放一帧动画
 ```javascript
 /* 
@@ -54,6 +57,7 @@ var 'newVariable' = new Motion('element');
 
 'motionVariable'.move('forward') //播放当前帧到下一帧的动画效果
 ```
+
 * loop 动画循环播放
 ```javascript
 /* 
@@ -62,4 +66,22 @@ var 'newVariable' = new Motion('element');
 */
 
 'motionVariable'.loop(3,'forward') //运行所有关键帧的动画并循环3次,停止时方向设置为'forward'
+```
+
+* stop
+```javascript
+/* 
+* @param1 {string} 动画停止后关键帧的运动方向
+*/
+
+'motionVariable'.stop('forward') //动画停止并且方向设置为'forward'
+```
+
+* reset
+```javascript
+/* 
+* @param1 {number} 动画停止的关键帧下标值
+*/
+
+'motionVariable'.reset('2') //停止在第二帧并且重置所有参数
 ```
