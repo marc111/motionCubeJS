@@ -342,7 +342,7 @@
             if(typeof f == "string"){
                 return f
             }
-            return "cubic-bezier("+f[0]+","+f[1]+","+f[2]+","+f[3]+")"
+            return "cubic-bezier("+f.join(",")+")"
         }
 
     });
@@ -542,17 +542,17 @@
             prepare:function () {
                 return this.trigger("prepare")
             },
-            move:function (d) {
-                return this.trigger("move",d)
+            move:function (i,d,f) {
+                return this.trigger("move",i,d,f)
             },
-            loop:function (i,d) {
-                return this.trigger("loop",i,d)
+            loop:function (i,f) {
+                return this.trigger("loop",i,f)
             },
-            stop:function (d) {
-                this.trigger("stop",d)
+            stop:function (f) {
+                this.trigger("stop",f)
             },
-            reset:function (n) {
-                return this.trigger("reset",n)
+            reset:function (i) {
+                return this.trigger("reset",i)
             }
 
         };
@@ -686,29 +686,13 @@
          * */
         Motion.prototype.addAction("loop",function (i,f) {
 
-            if(this.status == "prepare"){
-
-                this.status = "moving";
-
-                if(i == 0){
-                    this.motionCount = NaN
-                } else {
-                    this.motionCount = i?i*(((this.keyFrames.length-1)/2+1)*2-2):0.5*(((this.keyFrames.length-1)/2+1)*2-2)
-                }
-
-                this.endEvent = this.trigger("motionEnd",f).bind(this);
-
-
-                et.add(this.el,endE,this.endEvent,false);
-
-                this.trigger("directionTest");
-                this.trigger("frameTest");
-                this.trigger("frameRun");
-
-                return this
+            if(i == 0){
+                this.motionCount = NaN
+            } else {
+                this.motionCount = i?i*(((this.keyFrames.length-1)/2+1)*2-2):0.5*(((this.keyFrames.length-1)/2+1)*2-2)
             }
 
-            return false
+            this.trigger("motionMove",f)
         });
 
 
@@ -724,30 +708,13 @@
          * */
         Motion.prototype.addAction("move",function (i,d,f) {
 
-            if(this.status == "moving" || this.status == "prepare"){
+            this.motionCount = i;
 
-                this.status = "moving";
-
-                this.motionCount = i;
-
-
-                this.endEvent = this.trigger("motionEnd",f).bind(this);
-
-
-                et.add(this.el,endE,this.endEvent,false);
-
-                if(d){
-                    this.direction = d;
-                    this.trigger("directionTest");
-                } else {
-                    this.trigger("directionTest")
-                }
-
-                this.trigger("frameTest");
-                this.trigger("frameRun");
+            if(d && d != null){
+                this.direction = d
             }
 
-            return false
+            this.trigger("motionMove",f)
 
         });
 
@@ -903,6 +870,27 @@
             return this
         });
 
+
+        /*
+        * motion移动事件
+        *
+        * @param {function} 回调函数
+        *
+        * */
+        Motion.prototype.addAction("motionMove",function (f) {
+            if(this.status == "prepare"){
+
+                this.status = "moving";
+
+                this.endEvent = this.trigger("motionEnd",f).bind(this);
+
+                et.add(this.el,endE,this.endEvent,false);
+
+                this.trigger("directionTest");
+                this.trigger("frameTest");
+                this.trigger("frameRun");
+            }
+        });
 
         /*
          * motion动画完成事件
