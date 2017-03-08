@@ -163,164 +163,28 @@
 
         module.exports = {
             translateAll: function (x, y, z) {
-                return {
-                    m11: 1,
-                    m12: 0,
-                    m13: 0,
-                    m14: 0,
-                    m21: 0,
-                    m22: 1,
-                    m23: 0,
-                    m24: 0,
-                    m31: 0,
-                    m32: 0,
-                    m33: 1,
-                    m34: 0,
-                    m41: x,
-                    m42: y ? y : 0,
-                    m43: z ? z : 0,
-                    m44: 1
-                };
+                return [1,0,0,0,0,1,0,0,0,0,1,0,x,y?y:0,z?z:0,1]
             },
             translateX: function (x) {
-                return {
-                    m11: 1,
-                    m12: 0,
-                    m13: 0,
-                    m14: 0,
-                    m21: 0,
-                    m22: 1,
-                    m23: 0,
-                    m24: 0,
-                    m31: 0,
-                    m32: 0,
-                    m33: 1,
-                    m34: 0,
-                    m41: x,
-                    m42: 0,
-                    m43: 0,
-                    m44: 1
-                }
+                return [1,0,0,0,0,1,0,0,0,0,1,0,x,0,0,1]
             },
             translateY: function (y) {
-                return {
-                    m11: 1,
-                    m12: 0,
-                    m13: 0,
-                    m14: 0,
-                    m21: 0,
-                    m22: 1,
-                    m23: 0,
-                    m24: 0,
-                    m31: 0,
-                    m32: 0,
-                    m33: 1,
-                    m34: 0,
-                    m41: 0,
-                    m42: y,
-                    m43: 0,
-                    m44: 1
-                }
+                return [1,0,0,0,0,1,0,0,0,0,1,0,0,y,0,1]
             },
             translateZ: function (z) {
-                return {
-                    m11: 1,
-                    m12: 0,
-                    m13: 0,
-                    m14: 0,
-                    m21: 0,
-                    m22: 1,
-                    m23: 0,
-                    m24: 0,
-                    m31: 0,
-                    m32: 0,
-                    m33: 1,
-                    m34: 0,
-                    m41: 0,
-                    m42: 0,
-                    m43: z,
-                    m44: 1
-                }
+                return [1,0,0,0,0,1,0,0,0,0,1,0,0,0,z,1]
             },
             scale: function (x, y, z) {
-                return {
-                    m11: x,
-                    m12: 0,
-                    m13: 0,
-                    m14: 0,
-                    m21: 0,
-                    m22: y ? y : 1,
-                    m23: 0,
-                    m24: 0,
-                    m31: 0,
-                    m32: 0,
-                    m33: z ? z : 1,
-                    m34: 0,
-                    m41: 0,
-                    m42: 0,
-                    m43: 0,
-                    m44: 1
-                }
+                return [x,0,0,0,0,y?y:1,0,0,0,0,z?z:1,0,0,0,0,1]
             },
             scaleX: function (x) {
-                return {
-                    m11: x,
-                    m12: 0,
-                    m13: 0,
-                    m14: 0,
-                    m21: 0,
-                    m22: 1,
-                    m23: 0,
-                    m24: 0,
-                    m31: 0,
-                    m32: 0,
-                    m33: 1,
-                    m34: 0,
-                    m41: 0,
-                    m42: 0,
-                    m43: 0,
-                    m44: 1
-                }
+                return [x,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1]
             },
             scaleY: function (y) {
-                return {
-                    m11: 1,
-                    m12: 0,
-                    m13: 0,
-                    m14: 0,
-                    m21: 0,
-                    m22: y,
-                    m23: 0,
-                    m24: 0,
-                    m31: 0,
-                    m32: 0,
-                    m33: 1,
-                    m34: 0,
-                    m41: 0,
-                    m42: 0,
-                    m43: 0,
-                    m44: 1
-                }
+                return [1,0,0,0,0,y,0,0,0,0,1,0,0,0,0,1]
             },
             scaleZ: function (z) {
-                return {
-                    m11: 1,
-                    m12: 0,
-                    m13: 0,
-                    m14: 0,
-                    m21: 0,
-                    m22: 1,
-                    m23: 0,
-                    m24: 0,
-                    m31: 0,
-                    m32: 0,
-                    m33: z,
-                    m34: 0,
-                    m41: 0,
-                    m42: 0,
-                    m43: 0,
-                    m44: 1
-                }
+                return [1,0,0,0,0,1,0,0,0,0,z,0,0,0,0,1]
             },
             rotate: function (x, y, z, deg) {
                 var sin = Math.sin(Math.PI / (180 / deg)),
@@ -331,153 +195,42 @@
                     ny = x / norm,
                     nz = z / norm;
 
-                return {
-                    m11: nx * nx * (1 - cos) + cos,
-                    m12: nx * ny * (1 - cos) + nz * sin,
-                    m13: nx * nz * (1 - cos) - ny * sin,
-                    m14: 0,
-                    m21: nx * ny * (1 - cos) - nz * sin,
-                    m22: ny * ny * (1 - cos) + cos,
-                    m23: ny * nz * (1 - cos) + nx * sin,
-                    m24: 0,
-                    m31: nx * nz * (1 - cos) + ny * sin,
-                    m32: ny * nz * (1 - cos) - nx * sin,
-                    m33: nz * nz * (1 - cos) + cos,
-                    m34: 0,
-                    m41: 0,
-                    m42: 0,
-                    m43: 0,
-                    m44: 1
-                }
+                return [
+                    nx*nx*(1-cos)+cos,nx*ny*(1-cos)+nz*sin,nx*nz*(1-cos)-ny*sin,0,
+                    nx*ny*(1-cos)-nz*sin,ny*ny*(1-cos)+cos,ny*nz*(1-cos)+nx*sin,0,
+                    nx*nz*(1-cos)+ ny*sin,ny*nz*(1-cos)-nx*sin,nz*nz*(1-cos)+cos,0,
+                    0,0,0,1]
             },
             rotateX: function (deg) {
                 var sin = Math.sin(Math.PI / (180 / deg)),
                     cos = Math.cos(Math.PI / (180 / deg));
 
-                return {
-                    m11: 1,
-                    m12: 0,
-                    m13: 0,
-                    m14: 0,
-                    m21: 0,
-                    m22: cos,
-                    m23: sin,
-                    m24: 0,
-                    m31: 0,
-                    m32: -sin,
-                    m33: cos,
-                    m34: 0,
-                    m41: 0,
-                    m42: 0,
-                    m43: 0,
-                    m44: 1
-                }
+                return [1,0,0,0,0,cos,sin,0,0,-sin,cos,0,0,0,0,1]
             },
             rotateY: function (deg) {
                 var sin = Math.sin(Math.PI / (180 / deg)),
                     cos = Math.cos(Math.PI / (180 / deg));
 
-                return {
-                    m11: cos,
-                    m12: 0,
-                    m13: -sin,
-                    m14: 0,
-                    m21: 0,
-                    m22: 1,
-                    m23: 0,
-                    m24: 0,
-                    m31: sin,
-                    m32: 0,
-                    m33: cos,
-                    m34: 0,
-                    m41: 0,
-                    m42: 0,
-                    m43: 0,
-                    m44: 1
-                }
+                return [cos,0,-sin,0,0,1,0,0,sin,0,cos,0,0,0,0,1]
             },
             rotateZ: function (deg) {
                 var sin = Math.sin(Math.PI / (180 / deg)),
                     cos = Math.cos(Math.PI / (180 / deg));
 
-                return {
-                    m11: cos,
-                    m12: sin,
-                    m13: 0,
-                    m14: 0,
-                    m21: -sin,
-                    m22: cos,
-                    m23: 0,
-                    m24: 0,
-                    m31: 0,
-                    m32: 0,
-                    m33: 1,
-                    m34: 0,
-                    m41: 0,
-                    m42: 0,
-                    m43: 0,
-                    m44: 1
-                }
+                return [cos,sin,0,0,-sin,cos,0,0,0,0,1,0,0,0,0,1]
             },
             skew: function (x, y) {
-                return {
-                    m11: 1,
-                    m12: y ? Math.tan(Math.PI / (180 / y)) : Math.tan(Math.PI / (180 / x)),
-                    m13: 0,
-                    m14: 0,
-                    m21: Math.tan(Math.PI / (180 / x)),
-                    m22: 1,
-                    m23: 0,
-                    m24: 0,
-                    m31: 0,
-                    m32: 0,
-                    m33: 1,
-                    m34: 0,
-                    m41: 0,
-                    m42: 0,
-                    m43: 0,
-                    m44: 1
-                }
+                return [
+                    1,y?Math.tan(Math.PI/(180/y)):Math.tan(Math.PI/(180/x)),0,0,
+                    Math.tan(Math.PI/(180/x)),1,0,0,
+                    0,0,1,0,
+                    0,0,0,1]
             },
             skewX: function (x) {
-                return {
-                    m11: 1,
-                    m12: 0,
-                    m13: 0,
-                    m14: 0,
-                    m21: Math.tan(Math.PI / (180 / x)),
-                    m22: 1,
-                    m23: 0,
-                    m24: 0,
-                    m31: 0,
-                    m32: 0,
-                    m33: 1,
-                    m34: 0,
-                    m41: 0,
-                    m42: 0,
-                    m43: 0,
-                    m44: 1
-                }
+                return [1,0,0,0,Math.tan(Math.PI/(180/x)),1,0,0,0,0,1,0,0,0,0,1]
             },
             skewY: function (y) {
-                return {
-                    m11: 1,
-                    m12: Math.tan(Math.PI / (180 / y)),
-                    m13: 0,
-                    m14: 0,
-                    m21: 0,
-                    m22: 1,
-                    m23: 0,
-                    m24: 0,
-                    m31: 0,
-                    m32: 0,
-                    m33: 1,
-                    m34: 0,
-                    m41: 0,
-                    m42: 0,
-                    m43: 0,
-                    m44: 1
-                }
+                return [1,Math.tan(Math.PI/(180/y)),0,0,0,1,0,0,0,0,1,0,0,0,0,1]
             }
         }
 
@@ -495,25 +248,25 @@
      * */
     require.register("matrixCombine",function (module,exports) {
 
-        module.exports = function (m1,m2) {
-            return {
-                m11:m1.m11*m2.m11+m1.m21*m2.m12+m1.m31*m2.m13+m1.m41*m2.m14,
-                m12:m1.m12*m2.m11+m1.m22*m2.m12+m1.m32*m2.m13+m1.m42*m2.m14,
-                m13:m1.m13*m2.m11+m1.m23*m2.m12+m1.m33*m2.m13+m1.m43*m2.m14,
-                m14:m1.m14*m2.m11+m1.m24*m2.m12+m1.m34*m2.m13+m1.m44*m2.m14,
-                m21:m1.m11*m2.m21+m1.m21*m2.m22+m1.m31*m2.m23+m1.m41*m2.m24,
-                m22:m1.m12*m2.m21+m1.m22*m2.m22+m1.m32*m2.m23+m1.m42*m2.m24,
-                m23:m1.m13*m2.m21+m1.m23*m2.m22+m1.m33*m2.m23+m1.m43*m2.m24,
-                m24:m1.m14*m2.m21+m1.m24*m2.m22+m1.m34*m2.m23+m1.m44*m2.m24,
-                m31:m1.m11*m2.m31+m1.m21*m2.m32+m1.m31*m2.m33+m1.m41*m2.m34,
-                m32:m1.m12*m2.m31+m1.m22*m2.m32+m1.m32*m2.m33+m1.m42*m2.m34,
-                m33:m1.m13*m2.m31+m1.m23*m2.m32+m1.m33*m2.m33+m1.m43*m2.m34,
-                m34:m1.m14*m2.m31+m1.m24*m2.m32+m1.m34*m2.m33+m1.m44*m2.m34,
-                m41:m1.m11*m2.m41+m1.m21*m2.m42+m1.m31*m2.m43+m1.m41*m2.m44,
-                m42:m1.m12*m2.m41+m1.m22*m2.m42+m1.m32*m2.m43+m1.m42*m2.m44,
-                m43:m1.m13*m2.m41+m1.m23*m2.m42+m1.m33*m2.m43+m1.m43*m2.m44,
-                m44:m1.m14*m2.m41+m1.m24*m2.m42+m1.m34*m2.m43+m1.m44*m2.m44
-            }
+        module.exports = function (a1,a2) {
+            return [
+                a1[0]*a2[0]+a1[4]*a2[1]+a1[8]*a2[2]+a1[12]*a2[3],
+                a1[1]*a2[0]+a1[5]*a2[1]+a1[9]*a2[2]+a1[13]*a2[3],
+                a1[2]*a2[0]+a1[6]*a2[1]+a1[10]*a2[2]+a1[14]*a2[3],
+                a1[3]*a2[0]+a1[7]*a2[1]+a1[11]*a2[2]+a1[15]*a2[3],
+                a1[0]*a2[4]+a1[4]*a2[5]+a1[8]*a2[6]+a1[12]*a2[7],
+                a1[1]*a2[4]+a1[5]*a2[5]+a1[9]*a2[6]+a1[13]*a2[7],
+                a1[2]*a2[4]+a1[6]*a2[5]+a1[10]*a2[6]+a1[14]*a2[7],
+                a1[3]*a2[4]+a1[7]*a2[5]+a1[11]*a2[6]+a1[15]*a2[7],
+                a1[0]*a2[8]+a1[4]*a2[9]+a1[8]*a2[10]+a1[12]*a2[11],
+                a1[1]*a2[8]+a1[5]*a2[9]+a1[9]*a2[10]+a1[13]*a2[11],
+                a1[2]*a2[8]+a1[6]*a2[9]+a1[10]*a2[10]+a1[14]*a2[11],
+                a1[3]*a2[8]+a1[7]*a2[9]+a1[11]*a2[10]+a1[15]*a2[11],
+                a1[0]*a2[12]+a1[4]*a2[13]+a1[8]*a2[14]+a1[12]*a2[15],
+                a1[1]*a2[12]+a1[5]*a2[13]+a1[9]*a2[14]+a1[13]*a2[15],
+                a1[2]*a2[12]+a1[6]*a2[13]+a1[10]*a2[14]+a1[14]*a2[15],
+                a1[3]*a2[12]+a1[7]*a2[13]+a1[11]*a2[14]+a1[15]*a2[15]
+            ]
         }
     });
 
@@ -532,24 +285,7 @@
         module.exports = function (t) {
 
             if(t == "none"){
-                return {
-                    m11:1,
-                    m12:0,
-                    m13:0,
-                    m14:0,
-                    m21:0,
-                    m22:1,
-                    m23:0,
-                    m24:0,
-                    m31:0,
-                    m32:0,
-                    m33:1,
-                    m34:0,
-                    m41:0,
-                    m42:0,
-                    m43:0,
-                    m44:1
-                }
+                return [1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1]
             } else {
                 var i = t.indexOf("3d")<0?7:9;
                 var m = t.substring(i,t.length-1);
@@ -558,43 +294,13 @@
                     m[i] = parseFloat(m[i])
                 }
                 if(m.length==6){
-                    return {
-                        m11:m[0],
-                        m12:m[1],
-                        m13:0,
-                        m14:0,
-                        m21:m[2],
-                        m22:m[3],
-                        m23:0,
-                        m24:0,
-                        m31:0,
-                        m32:0,
-                        m33:1,
-                        m34:0,
-                        m41:m[4],
-                        m42:m[5],
-                        m43:0,
-                        m44:1
-                    }
+                    return [m[0],m[1],0,0,m[2],m[3],0,0,0,0,1,0,m[4],m[5],0,1]
                 } else {
-                    return {
-                        m11:m[0],
-                        m12:m[1],
-                        m13:m[2],
-                        m14:m[3],
-                        m21:m[4],
-                        m22:m[5],
-                        m23:m[6],
-                        m24:m[7],
-                        m31:m[8],
-                        m32:m[9],
-                        m33:m[10],
-                        m34:m[11],
-                        m41:m[12],
-                        m42:m[13],
-                        m43:m[14],
-                        m44:m[15]
-                    }
+                    return [
+                        m[0],m[1],m[2],m[3],
+                        m[4],m[5],m[6],m[7],
+                        m[8],m[9],m[10],m[11],
+                        m[12],m[13],m[14],m[15]]
                 }
             }
         }
@@ -614,11 +320,7 @@
     require.register("matrixToString",function (module,exports) {
 
         module.exports = function (m) {
-            var s = "matrix3d(";
-            for(var k in m){
-                s+=m[k]+","
-            }
-            return s.substring(0,s.length-1)+")"
+            return "matrix3d("+m.join(",")+")"
         }
 
     });
@@ -978,11 +680,11 @@
          * motion动画循环播放时间
          * 让元素所以关键帧动画循环播放
          *
-         * @ param1 {number} 播放次数
-         * @ param2 {string} 播放后的动画方向
+         * @ param1 {number} 循环次数
+         * @ param2 {function} 循环完成后的回调函数
          * @ api {public}
          * */
-        Motion.prototype.addAction("loop",function (i,d) {
+        Motion.prototype.addAction("loop",function (i,f) {
 
             if(this.status == "prepare"){
 
@@ -994,7 +696,7 @@
                     this.motionCount = i?i*(((this.keyFrames.length-1)/2+1)*2-2):0.5*(((this.keyFrames.length-1)/2+1)*2-2)
                 }
 
-                this.endEvent = this.trigger("loopEnd").bind(this,d);
+                this.endEvent = this.trigger("motionEnd",f).bind(this);
 
 
                 et.add(this.el,endE,this.endEvent,false);
@@ -1015,25 +717,28 @@
          * motion单帧播放时间
          * 让元素只播放一个关键帧的动画
          *
-         * @ param1 {string} 动画播放方向
+         * @ param1 {number} 动画运动帧数
+         * @ param1 {string} 动画运动方向
+         * @ param1 {function} 动画完成或的回调函数
          * @ api {public}
          * */
-        Motion.prototype.addAction("move",function (d) {
+        Motion.prototype.addAction("move",function (i,d,f) {
 
             if(this.status == "moving" || this.status == "prepare"){
 
                 this.status = "moving";
 
-                this.motionCount = 1;
+                this.motionCount = i;
 
 
-                this.endEvent = this.trigger("moveEnd").bind(this);
+                this.endEvent = this.trigger("motionEnd",f).bind(this);
 
 
                 et.add(this.el,endE,this.endEvent,false);
 
                 if(d){
-                    this.direction = d
+                    this.direction = d;
+                    this.trigger("directionTest");
                 } else {
                     this.trigger("directionTest")
                 }
@@ -1117,7 +822,7 @@
 
             if(!this.moveFrame || !this.transFrame){
                 this.motionCount = 0;
-                return false
+                return
             }
 
         });
@@ -1149,17 +854,16 @@
          * @ param {string} 动画停止后的播放方向
          * @ api {public}
          * */
-        Motion.prototype.addAction("stop",function (d) {
+        Motion.prototype.addAction("stop",function (f) {
 
             et.sub(this.el,endE,this.endEvent,false);
             this.endEvent = null;
-
             this.el.style[ts+"Duration"] = "0ms";
             this.status = "prepare";
             ss.call(this.el,this.moveFrame);
             this.motionCount = 0;
-            if(d){
-                this.direction = d
+            if(f){
+                f()
             }
             return this
         });
@@ -1200,44 +904,22 @@
         });
 
 
-
         /*
-         * motion单帧动画完成事件
-         * 设定单帧动画每次transitionEnd后的回调函数
+         * motion动画完成事件
+         * 设定动画每次transitionEnd后的动作和触发回调函数
          *
+         * @ param {function} 回调函数
          * @ api {private}
          * */
-        Motion.prototype.addAction("moveEnd",function () {
+        Motion.prototype.addAction("motionEnd",function (f) {
 
             return function () {
-                this.endCount++;
-                if(this.endCount==this.transFrame.eventCount){
-
-                    this.motionCount = 0;
-                    return this.trigger("stop")
-
-                }
-            }
-
-        });
-
-
-
-        /*
-         * motion循环动画完成事件
-         * 设定单帧动画每次transitionEnd后的回调函数
-         *
-         * @ api {private}
-         * */
-        Motion.prototype.addAction("loopEnd",function () {
-
-            return function (d) {
                 this.endCount++;
                 if(this.transFrame.eventCount==this.endCount){
                     this.endCount = 0;
                     this.motionCount--;
                     if(this.motionCount == 0){
-                        return this.trigger("stop",d)
+                        return this.trigger("stop",f)
                     } else {
                         this.trigger("directionTest");
                         this.trigger("frameTest");
