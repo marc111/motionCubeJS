@@ -47,7 +47,7 @@ var 'newVariable' = new Motion('element');
                 
                 
                 
-//还有更多matrix类api查看......
+//还有更多matrix类可以到document的api查看......
 ```
 <br/>
 * newAttribute 设置自定义动画属性
@@ -133,3 +133,5 @@ safari 4.0+<br/>
 opera 15.0+<br/>
 
 ## document
+motionCubeJS的文档可点击以下链接:
+http://www.mz-world.cn/
