@@ -133,5 +133,5 @@ safari 4.0+<br/>
 opera 15.0+<br/>
 
 ## document
-motionCubeJS的文档可点击以下链接:
+motionCubeJS的文档可点击以下链接:<br/>
 http://www.mz-world.cn/
