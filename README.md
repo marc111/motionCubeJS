@@ -15,6 +15,7 @@ var 'newVariable' = new Motion('element');
 //使用new关键字传入一个目标元素新建一个Motion对象,即可使用motionCubeJs的api设置元素的动画效果
 ```
 ## API:
+* 11
 * newFrame (新建关键帧)
 ```javascript
 /*
@@ -23,8 +24,4 @@ var 'newVariable' = new Motion('element');
 */
 'motionVariable'.newFrame(200,'ease') //在前一关键帧到新帧的过渡时间为200毫秒,运动曲线为'ease'
 ```
-<br/>
-* matrix (transform 矩阵类)
-```javascript
-'motionVariable'.newFrame(200,'ease').translateAll(20,30) //在新帧中添加X轴移动20pxY轴移动30px动作
-```
+## test:
