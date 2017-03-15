@@ -24,3 +24,6 @@ var 'newVariable' = new Motion('element');
 'motionVariable'.newFrame(200,'ease') //在前一关键帧到新帧的过渡时间为200毫秒,运动曲线为'ease'
 ```
 * matrix (transform 矩阵)
+```javascript
+'motionVariable'.newFrame(200,'ease').translateAll(20,30) //在新帧中添加X轴移动20pxY轴移动30px动作
+```
