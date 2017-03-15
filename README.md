@@ -21,7 +21,6 @@ var 'newVariable' = new Motion('element');
 * @param1 {number} 动画过渡时间
 * @param2 {string or array} 动画运动曲线
 */
-<br/>
 'motionVariable'.newFrame(200,'ease') //在前一关键帧到新帧的过渡时间为200毫秒,运动曲线为'ease'
 ```
 <br/>
