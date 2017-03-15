@@ -26,8 +26,5 @@ var 'newVariable' = new Motion('element');
 <br/>
 * matrix (transform 矩阵类)
 ```javascript
-
-
-'motionVariable'.newFrame(200,'ease')
-                .translateAll(20,30) //在新帧中添加X轴移动20pxY轴移动30px动作
+'motionVariable'.newFrame(200,'ease').translateAll(20,30) //在新帧中添加X轴移动20pxY轴移动30px动作
 ```
