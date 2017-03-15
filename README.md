@@ -25,9 +25,9 @@ var 'newVariable' = new Motion('element');
 ```
 <br/>
 * matrix (transform 矩阵类)
+** translateAll
 ```javascript
 /*
-* translateAll
 * @param1 {number} 元素X轴位移值
 * @param2 {number} 元素Y轴位移值
 * @param3 {number} 元素Z轴位移值
@@ -35,8 +35,11 @@ var 'newVariable' = new Motion('element');
 
 'motionVariable'.newFrame(200,'ease')
                 .translateAll(20,30) //在新帧中添加X轴移动20pxY轴移动30px动作
+```
+** rotateZ
+```javascript
 /*
-* rotateZ
+* 
 * @param1 {number} 元素Z轴旋转角度
 */
 
