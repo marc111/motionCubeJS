@@ -21,12 +21,35 @@ var 'newVariable' = new Motion('element');
 * @param1 {number} 动画过渡时间
 * @param2 {string or array} 动画运动曲线
 */
+<br/>
 'motionVariable'.newFrame(200,'ease') //在前一关键帧到新帧的过渡时间为200毫秒,运动曲线为'ease'
 ```
-* matrix (transform 矩阵)
+<br/>
+* matrix (transform 矩阵类)
 ```javascript
-'motionVariable'.newFrame(200,'ease').translateAll(20,30) //在新帧中添加X轴移动20pxY轴移动30px动作
+/*
+* translateAll
+* @param1 {number} 元素X轴位移值
+* @param2 {number} 元素Y轴位移值
+* @param3 {number} 元素Z轴位移值
+*/
+
+'motionVariable'.newFrame(200,'ease')
+                .translateAll(20,30) //在新帧中添加X轴移动20pxY轴移动30px动作
+/*
+* rotateZ
+* @param1 {number} 元素Z轴旋转角度
+*/
+
+'motionVariable'.newFrame(200,'ease')
+                .translateAll(20,30)
+                .rotateZ(45) //添加Z轴上旋转45度动作
+                
+                
+                
+//还有更多matrix类api查看......
 ```
+<br/>
 * newAttribute 设置自定义动画属性
 ```javascript
 'motionVariable'.newFrame(200,'ease')
@@ -34,6 +57,7 @@ var 'newVariable' = new Motion('element');
                 .rotateZ(45) 
                 .newAttribute("opacity","0.5")//添加透明度变为0.5的动作
 ```
+<br/>
 * prepare 触发动画前准备
 ```javascript
 'motionVariable'.newFrame(200,'ease')
@@ -41,6 +65,7 @@ var 'newVariable' = new Motion('element');
                 .rotateZ(45)
                 .prepare() //动画触发前准备
 ```
+<br/>
 * move 播放动画
 ```javascript
 /* 
@@ -51,6 +76,7 @@ var 'newVariable' = new Motion('element');
 
 'motionVariable'.move(2,'forward') //播放2帧动画
 ```
+<br/>
 * loop 动画循环播放
 ```javascript
 /* 
@@ -60,6 +86,7 @@ var 'newVariable' = new Motion('element');
 
 'motionVariable'.loop(3,function(){console.log('done!')}) //运行所有关键帧的动画并循环3次,打印'done!'
 ```
+<br/>
 * stop
 ```javascript
 /* 
@@ -68,6 +95,7 @@ var 'newVariable' = new Motion('element');
 
 'motionVariable'.stop() //
 ```
+<br/>
 * reset
 ```javascript
 /* 
@@ -96,6 +124,7 @@ chrome 4.0+<br/>
 firefox 4.0+<br/>
 safari 3.1+<br/>
 opera 10.5+<br/>
+<br/>
 * 3d动画兼容:<br/>
 IE 10.0+<br/>
 chrome 12.0+<br/>
@@ -104,5 +133,3 @@ safari 4.0+<br/>
 opera 15.0+<br/>
 
 ## document
-motionCubeJS的文档可点击以下链接:<br/>
-http://www.mz-world.cn/
