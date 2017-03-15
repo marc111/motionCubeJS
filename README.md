@@ -34,7 +34,6 @@ var 'newVariable' = new Motion('element');
                 .rotateZ(45) 
                 .newAttribute("opacity","0.5")//添加透明度变为0.5的动作
 ```
-<br/>
 * prepare 触发动画前准备
 ```javascript
 'motionVariable'.newFrame(200,'ease')
@@ -42,7 +41,6 @@ var 'newVariable' = new Motion('element');
                 .rotateZ(45)
                 .prepare() //动画触发前准备
 ```
-<br/>
 * move 播放动画
 ```javascript
 /* 
@@ -53,7 +51,6 @@ var 'newVariable' = new Motion('element');
 
 'motionVariable'.move(2,'forward') //播放2帧动画
 ```
-<br/>
 * loop 动画循环播放
 ```javascript
 /* 
@@ -63,7 +60,6 @@ var 'newVariable' = new Motion('element');
 
 'motionVariable'.loop(3,function(){console.log('done!')}) //运行所有关键帧的动画并循环3次,打印'done!'
 ```
-<br/>
 * stop
 ```javascript
 /* 
@@ -72,7 +68,6 @@ var 'newVariable' = new Motion('element');
 
 'motionVariable'.stop() //
 ```
-<br/>
 * reset
 ```javascript
 /* 
@@ -101,7 +96,6 @@ chrome 4.0+<br/>
 firefox 4.0+<br/>
 safari 3.1+<br/>
 opera 10.5+<br/>
-<br/>
 * 3d动画兼容:<br/>
 IE 10.0+<br/>
 chrome 12.0+<br/>
